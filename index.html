@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>&lt;temp-tree&gt;</title>
+
+    <!-- Importing Web Component"s Polyfill -->
+    <script src="bower_components/platform/platform.js"></script>
+
+    <!-- Importing Custom Elements -->
+    <link rel="import" href="temp-tree.html">
+</head>
+<body>
+
+    <!-- Using Custom Elements -->
+    <temp-tree 
+        id="example"
+        data-src='{"name": "Parent A", "children": [{"name": "Child", "children": [{"name": "Grandchild"}]}]}'>
+    </temp-tree>
+
+    <temp-tree id="example2"></temp-tree>
+
+    <script>
+        document.getElementById('example2').data = {
+  "name": "Parent B",
+  "children": [
+    {
+      "name": "Child B",
+      "children": [
+        {
+          "name": "Grandchild A"
+        }
+      ]
+    },
+    {
+      "name": "Child A",
+      "children": [
+        {
+          "name": "Grandchild B"
+        }
+      ]
+    },
+    {
+      "name": "Child C",
+      "children": [
+        {
+          "name": "Grandchild C",
+          "children": [
+            {
+              "name": "Grandchild C.1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Child D",
+      "children": [
+        {
+          "name": "Grandchild D"
+        }
+      ]
+    }
+  ]
+}
+
+    </script>
+</body>
+</html>
