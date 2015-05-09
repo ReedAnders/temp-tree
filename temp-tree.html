@@ -47,7 +47,6 @@
         Polymer('temp-tree', {
             data: {},
             toggleChildren: function(e, detail, sender){
-                console.log(e)
                 if (e.target.className.indexOf('parent') > -1 && e.target.nextElementSibling) {
                     var current_display = e.target.nextElementSibling.style.display;
                     if (current_display !== 'block') {
@@ -55,11 +54,15 @@
                         e.target.nextElementSibling.style.display = 'block';
                     } else {
                         // e.target.className = 'parent collapsed';
+                        console.log('inside 1', e.target.nextElementSibling.getElementsByTagName('ul'))
                         e.target.nextElementSibling.style.display = 'none';
 
-                        // TODO add collapseBranch function
+                        // Collapse branch 
+                        for (var i = e.target.nextElementSibling.getElementsByTagName('ul').length - 1; i >= 0; i--) {
+                            console.log('inside 2')
+                            e.target.nextElementSibling.getElementsByTagName('ul')[i].style.display = 'none'
+                        };
 
-                        console.log(detail);
                     }
                 }
             },
@@ -71,6 +74,12 @@
 
                 // Root nodes hidden at initialization
                 // this.$.main.lastElementChild.style.display = 'none';
+
+                var childNodes = this.$.main.getElementsByTagName('ul');
+                // console.log(childNodes.length)
+                for (var i = childNodes.length - 1; i >= 0; i--) {
+                    // console.log(childNodes[i].style.display)
+                };
 
             },
 
