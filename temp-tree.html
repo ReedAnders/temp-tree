@@ -25,11 +25,15 @@
         <div id="main" unresolved="">
 
             <!-- Template to be called recursively -->
-            <template id="tree_template" bind="{{data}}" onload="{{collapseChildren}}">
+            <template id="tree_template" bind="{{data}}">
                 <div 
                     class="{{ children && children.length > 0 ? 'parent' : ''}}" 
                     on-click="{{toggleChildren}}">
+
+                    <!-- Binding values for key 'name' -->
                     {{name}}
+
+
                 </div>
                 <ul>
                     <template repeat="{{ child in children }}">
